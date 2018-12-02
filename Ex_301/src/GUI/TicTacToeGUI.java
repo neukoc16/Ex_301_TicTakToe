@@ -12,36 +12,39 @@ import javax.swing.JOptionPane;
 public class TicTacToeGUI extends JFrame {
 
     private int clicked = 0;
-    private final int[][] array = new int[3][3];
 
     public TicTacToeGUI() throws HeadlessException {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(3, 3));
         this.setSize(500, 500);
 
-        for (int i = 1; i <= 9; i++) {
+        for (int in = 1; in <= 9; in++) {
+            int all = in;
             JButton button = new JButton();
             button.setBackground(Color.BLACK);
             button.setSize(10, 10);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    for (int x = 0; x < 3; x++) {
-                        for (int y = 0; y < 3; y++) {
-                            array[x][y] = i * 3 + y;
-                        }
-                    }
+                    int x = all % 3;
+                    int y = all / 3;
+                    int[][] array = new int[3][3];
+                    
+                    
+                    
                     clicked++;
+
                     if (clicked % 2 == 0) {
                         button.setBackground(Color.RED);
                     } else {
                         button.setBackground(Color.BLUE);
                     }
-                    if () {
-                        button.setEnabled(false);
-                        JOptionPane.showMessageDialog(null, "The Game is now over!");
-                        System.exit(0);
-                    }
+
+//                    if () {
+//                        button.setEnabled(false);
+//                        JOptionPane.showMessageDialog(null, "The Game is now over!");
+//                        System.exit(0);
+//                    }
                 }
             });
             this.add(button);
