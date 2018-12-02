@@ -29,9 +29,8 @@ public class TicTacToeGUI extends JFrame {
                     int x = all % 3;
                     int y = all / 3;
                     int[][] array = new int[3][3];
-                    
-                    
-                    
+
+                    //gave up, due to not understanding anything
                     clicked++;
 
                     if (clicked % 2 == 0) {
