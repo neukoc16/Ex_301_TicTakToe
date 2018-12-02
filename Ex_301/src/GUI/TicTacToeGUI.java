@@ -3,11 +3,15 @@ package GUI;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class TicTacToeGUI extends JFrame {
+    
+    private int clicked = 0;
     
     public TicTacToeGUI() throws HeadlessException {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,10 +19,26 @@ public class TicTacToeGUI extends JFrame {
         this.setSize(500, 500);
         
         for (int i = 1; i <= 9; i++) {
-            JLabel label = new JLabel();
-            label.setForeground(Color.RED);
-            label.setSize(10, 10);
-            this.add(label);
+            JButton button = new JButton();
+            button.setBackground(Color.BLACK);
+            button.setSize(10, 10);
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    clicked++;
+                    if (clicked % 2 == 0) {
+                        button.setBackground(Color.RED);
+                    } else {
+                        button.setBackground(Color.BLUE);
+                    }
+                    if () {
+                        button.setEnabled(false);
+                        JOptionPane.showMessageDialog(null, "The Game is now over!");
+                        System.exit(0);
+                    }
+                }
+            });
+            this.add(button);
         }
     }
     
