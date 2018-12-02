@@ -10,14 +10,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class TicTacToeGUI extends JFrame {
-    
+
     private int clicked = 0;
-    
+    private final int[][] array = new int[3][3];
+
     public TicTacToeGUI() throws HeadlessException {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(3, 3));
         this.setSize(500, 500);
-        
+
         for (int i = 1; i <= 9; i++) {
             JButton button = new JButton();
             button.setBackground(Color.BLACK);
@@ -25,6 +26,11 @@ public class TicTacToeGUI extends JFrame {
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    for (int x = 0; x < 3; x++) {
+                        for (int y = 0; y < 3; y++) {
+                            array[x][y] = i * 3 + y;
+                        }
+                    }
                     clicked++;
                     if (clicked % 2 == 0) {
                         button.setBackground(Color.RED);
@@ -41,7 +47,7 @@ public class TicTacToeGUI extends JFrame {
             this.add(button);
         }
     }
-    
+
     public static void main(String[] args) {
         new TicTacToeGUI().setVisible(true);
     }
